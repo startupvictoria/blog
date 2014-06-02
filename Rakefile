@@ -9,7 +9,7 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
+deploy_default = "deploy_to_membership_site_repo"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "gh-pages"
@@ -238,9 +238,15 @@ task :copydot, :source, :dest do |t, args|
   end
 end
 
-desc "deploy to startup victoria repo"
-task :deploy_startupvictoria_repo do
-  cp_r Dir.glob("public/blog/*"), "../membership-site/public/blog/"
+desc "deploy to a local startup victoria membership-site repo"
+task :deploy_to_membership_site_repo do
+  if File.directory?("../membership-site/public/blog/")
+    cp_r Dir.glob("public/blog/*"), "../membership-site/public/blog/"
+  else
+    puts "Unable to deploy to local membership-site repo - it doesn't exist!"
+    puts "You probably want to clone git@github.com:startupvictoria/membership-site.git"
+    puts "to your local filesystem as a peer of this repo."
+  end
 end
 
 desc "Deploy website via rsync"
