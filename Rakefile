@@ -238,6 +238,11 @@ task :copydot, :source, :dest do |t, args|
   end
 end
 
+desc "deploy to startup victoria repo"
+task :deploy_startupvictoria_repo do
+  cp_r Dir.glob("public/blog/*"), "../membership-site/public/blog/"
+end
+
 desc "Deploy website via rsync"
 task :rsync do
   exclude = ""
