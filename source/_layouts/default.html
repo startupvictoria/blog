@@ -6,7 +6,7 @@
 {% include head.html %}
   <body>
     <a href="/" class="home-icon">
-      <img src="/images/home.png"/>
+        <img src="{{ site.root }}/images/home.png"/>
     </a>
 
     {{ content | expand_urls: root_url }}
