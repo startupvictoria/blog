@@ -18,6 +18,20 @@ single: true
   </div>
 </article>
 
+{% if site.disqus_short_name and page.comments == true %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+        </section>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
 <hr class="divider-short"/>
 
 <div class="archive-link">
