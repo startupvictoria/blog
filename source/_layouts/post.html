@@ -10,7 +10,6 @@ single: true
         <h1>{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
         <div class="meta">
           {% include post/author.html %}
-          written {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
           {% include post/categories.html %}
         </div>
         {{ content }}
